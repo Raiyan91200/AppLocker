@@ -1,0 +1,3 @@
+# Store text files with LF in the repo; check out with the platform default.
+* text=auto
+*.ico binary

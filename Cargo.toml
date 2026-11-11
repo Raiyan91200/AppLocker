@@ -1,0 +1,43 @@
+[package]
+name = "applocker"
+version = "1.0.0"
+edition = "2021"
+description = "Minimal app locker for Windows"
+publish = false
+
+[dependencies]
+argon2 = "0.5"
+# Only here to turn on OS randomness for salts (shared with argon2's copy).
+password-hash = { version = "0.5", features = ["getrandom"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dependencies.windows-sys]
+version = "0.59"
+features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Security",
+    "Win32_Security_Cryptography",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Registry",
+    "Win32_System_Threading",
+    "Win32_UI_Accessibility",
+    "Win32_UI_Controls",
+    "Win32_UI_Controls_Dialogs",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[build-dependencies]
+embed-resource = "2.5"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

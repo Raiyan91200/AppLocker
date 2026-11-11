@@ -1,0 +1,16 @@
+# Rust build output
+/target/
+**/*.rs.bk
+*.pdb
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Local tooling
+.claude/
